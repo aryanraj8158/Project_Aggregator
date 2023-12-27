@@ -58,36 +58,33 @@ const HomePage = ({ setArticles }) => {
   function onArticleClick(articleUrl) {
     setSelectedArticleUrl(articleUrl);
     setShowMiniBrowser(true);
+    fetchNewsData(articleUrl);
   }
 
   const [miniBrowserLoading, setMiniBrowserLoading] = useState(false);
 
   async function fetchNewsData(articleUrl) {
     try {
-      setMiniBrowserLoading(true); // Set loading state to true when fetching news for mini browser
+      setMiniBrowserLoading(true); 
       const res = await fetch(`${url}?url=${articleUrl}&apiKey=${API_KEY}`);
       const data = await res.json();
-      setMiniBrowserLoading(false); // Set loading state to false when news is loaded
-      // Use the fetched data as needed (data.article or other relevant content)
+      console.log(data);
+      setMiniBrowserLoading(false); 
     } catch (error) {
       console.error('Error fetching news:', error);
-      setMiniBrowserLoading(false); // Set loading state to false if there's an error
+      setMiniBrowserLoading(false); 
     }
   }
 
-  function onArticleClick(articleUrl) {
-    setSelectedArticleUrl(articleUrl);
-    setShowMiniBrowser(true);
-    fetchNewsData(articleUrl);
-  }
+  
 
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
-            <a className="navbar-brand me-auto">
+            <span className="navbar-brand me-auto">
             <b>News Aggregator</b>
-          </a>
+          </span>
           <button
             className="navbar-toggler"
             type="button"
@@ -103,16 +100,16 @@ const HomePage = ({ setArticles }) => {
             <ul className="navbar-nav me-auto ms-4 mb-2 mb-lg-0 d-flex align-items-center">
               {topics.map((topic) => (
                 <li className="nav-item" key={topic}>
-                  <a
+                  <span
                     className={`nav-link ${selectedTopic === topic ? 'active' : ''}`}
                     onClick={() => onTopicClick(topic)}
                     href="#"
                   >
                     {topic}
-                  </a>
+                  </span>
                 </li>
               ))}<li className="nav-item me-auto ms-3">
-              <a class="git-link" href="https://github.com/aryanraj8158/XYZ-aggregator.git">GitHub Link</a>
+              <a class="git-link" href="https://github.com/aryanraj8158/Project_Aggregator">GitHub Link</a>
             </li>
             </ul>
             <form className="d-flex">
