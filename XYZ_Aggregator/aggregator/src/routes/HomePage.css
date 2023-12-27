@@ -1,0 +1,17 @@
+.card-img-top{
+    object-fit: cover;
+    max-height: 150px;
+}
+.card:hover {
+    transform: translateY(-10px); /* Move the card up slightly on hover */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5); /* Add a box shadow on hover */
+    transition: transform 0.5s ease, box-shadow 0.5s ease; /* Apply transition to transform and box-shadow */
+  }
+  .git-link {
+    color: rgba(128, 128, 128, 0.562);
+    text-decoration: none;
+  } 
+  .git-link:hover {
+    text-decoration: none;
+    color: white;
+  }
